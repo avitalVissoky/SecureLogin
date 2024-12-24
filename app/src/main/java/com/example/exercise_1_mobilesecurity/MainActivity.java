@@ -11,16 +11,13 @@ import android.net.NetworkCapabilities;
 import android.os.BatteryManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
+
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,15 +53,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         magnetometer = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
 
         permissionUtils.requestPermissionsIfNeeded(this);
-//
-//        loginButton.setOnClickListener(v -> {
-//            if (allConditionsMet()) {
-//                Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show();
-//                startActivity(new Intent(this, HomeActivity.class));
-//            } else {
-//                showMissingConditionsDialog(getMissingConditions());
-//            }
-//        });
+
         loginButton.setOnClickListener(v -> {
             locationHelper.isLocationOkAsync(isLocationOk -> {
                 if (isLocationOk && allConditionsMet()) {
